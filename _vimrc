@@ -62,6 +62,7 @@ set statusline +=%-3.c
 syntax on
 filetype plugin on
 colorscheme base16-default-dark
+set autoindent
 set number
 set history=250
 set tabstop=4
@@ -95,7 +96,7 @@ cd $USERPROFILE\\OneDrive - Nutreco Nederland B.V\Work
 
 " Key mappings
 let mapleader = ","
-nnoremap <leader><space> :nohlsearch<CR>
+nnoremap <leader>hl :nohlsearch<CR>
 noremap <leader>sb :call ScratchBuffer()<CR>
 noremap <Up> <NOP>
 noremap <Down> <NOP>
@@ -112,7 +113,6 @@ augroup filetype_python
     autocmd FileType python setlocal fileformat=unix
     autocmd FileType python setlocal tabstop=4
     autocmd FileType python setlocal columns=100
-    autocmd FileType python setlocal noautoindent
     autocmd FileType python setlocal foldmethod=indent
     autocmd FileType python setlocal shiftwidth=4
     autocmd FileType python setlocal colorcolumn=79
