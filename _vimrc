@@ -78,7 +78,6 @@ set cursorline
 set mouse-=a
 set hidden
 set wildmenu
-set expandtab
 set splitright
 set splitbelow
 
