@@ -89,9 +89,8 @@ set guioptions-=L               " Remove left-hand scroll bar
 set backspace=2                 " Restores backspace function
 set completeopt=menuone         " Show completion menu on 1 item
 set lines=35
-set columns=120
 set dir=$USERPROFILE\\AppData\\Local\\Temp
-cd $USERPROFILE\\OneDrive - Nutreco Nederland B.V\Work
+cd $USERPROFILE\\Documents
 
 " Key mappings
 let mapleader = ","
@@ -111,7 +110,6 @@ augroup filetype_python
     autocmd FileType python noremap <localleader>c :call ToggleComment("#")<CR>
     autocmd FileType python setlocal fileformat=unix
     autocmd FileType python setlocal tabstop=4
-    autocmd FileType python setlocal columns=100
     autocmd FileType python setlocal foldmethod=indent
     autocmd FileType python setlocal shiftwidth=4
     autocmd FileType python setlocal colorcolumn=79
