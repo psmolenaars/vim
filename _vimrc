@@ -61,13 +61,13 @@ set statusline +=%-3.c
 " General
 syntax on
 filetype plugin on
-colorscheme base16-default-dark
+"colorscheme base16-default-dark
 set autoindent
 set number
 set history=250
 set tabstop=4
 set ignorecase
-set guifont=Bitstream\ Vera\ Sans\ Mono:h10
+"set guifont=Bitstream\ Vera\ Sans\ Mono:h10
 set hlsearch
 set incsearch
 set listchars=eol:¦,trail:~,nbsp:_,tab:>-
@@ -82,15 +82,15 @@ set splitright
 set splitbelow
 
 " gVim specific (windows)
-set guioptions-=m               " Remove menu bar
-set guioptions-=T               " Remove toolbar
-set guioptions-=r               " Remove right-hand scroll bar
-set guioptions-=L               " Remove left-hand scroll bar
-set backspace=2                 " Restores backspace function
-set completeopt=menuone         " Show completion menu on 1 item
-set lines=35
-set dir=$USERPROFILE\\AppData\\Local\\Temp
-cd $USERPROFILE\\Documents
+"set guioptions-=m               " Remove menu bar
+"set guioptions-=T               " Remove toolbar
+"set guioptions-=r               " Remove right-hand scroll bar
+"set guioptions-=L               " Remove left-hand scroll bar
+"set backspace=2                 " Restores backspace function
+"set completeopt=menuone         " Show completion menu on 1 item
+"set lines=35
+"set dir=$USERPROFILE\\AppData\\Local\\Temp
+"cd $USERPROFILE\\Documents
 
 " Key mappings
 let mapleader = ","
@@ -119,12 +119,12 @@ augroup filetype_python
 augroup END
 
 " Bind python and pylint if available
-if FindExe('python.exe')
-    nnoremap <F5> :!start python %<CR>
-    let lint_path = $APPDATA.'\Python\Python37\Scripts\'
-    if FindExe('pylint.exe')
-        nnoremap <F4> :!start pylint.exe %<CR>
-    elseif CheckFile(lint_path, 'pylint.exe')
-        nnoremap <F4> :execute "!start cmd /k ".lint_path."\pylint %"<CR>
-    endif
-endif
+"if FindExe('python.exe')
+"    nnoremap <F5> :!start python %<CR>
+"    let lint_path = $APPDATA.'\Python\Python37\Scripts\'
+"    if FindExe('pylint.exe')
+"        nnoremap <F4> :!start pylint.exe %<CR>
+"    elseif CheckFile(lint_path, 'pylint.exe')
+"        nnoremap <F4> :execute "!start cmd /k ".lint_path."\pylint %"<CR>
+"    endif
+"endif
