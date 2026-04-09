@@ -61,7 +61,7 @@ set statusline +=%-3.c
 " General
 syntax on
 filetype plugin on
-"colorscheme base16-default-dark
+colorscheme slate
 set autoindent
 set number
 set history=250
