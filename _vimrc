@@ -75,7 +75,7 @@ set list
 set scrolloff=5
 set encoding=utf-8
 set cursorline
-set mouse-=a
+set mouse=a
 set hidden
 set wildmenu
 set splitright
