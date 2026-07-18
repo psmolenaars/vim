@@ -62,32 +62,40 @@ endfunction
 " Adjust the statusbar
 set laststatus=2
 set statusline=
-"set statusline +=%.20t\ 
-set statusline +=%{BufferList()}
+set statusline +=%.20t\ 
 set statusline +=%r
 set statusline +=%m
 set statusline +=%=
+set statusline +=%#CursorLine#
+set statusline +=\ 
 set statusline +=%{&ff}
-set statusline +=\ \|\ 
+set statusline +=\ 
+set statusline +=%#Pmenu#
+set statusline +=\ 
 set statusline +=%{&enc}
-set statusline +=\ \|\ 
-set statusline +=%3.p%%
-set statusline +=\ \|
-set statusline +=%3.l
+set statusline +=\ 
+set statusline +=%#CursorLine#
+set statusline +=\ 
+set statusline +=%.l
 set statusline +=:
-set statusline +=%-3.c
+set statusline +=%.c
+set statusline +=\ 
+set statusline +=%#PmenuMatch#
+set statusline +=\ 
+set statusline +=%.p%%\ 
 
 " General
 syntax on
 filetype plugin on
 set autoindent
+set number
 set relativenumber
 set history=250
 set tabstop=4
 set ignorecase
 set hlsearch
 set incsearch
-set listchars=eol:¦,trail:~,nbsp:_,tab:>-
+set listchars=eol:$,trail:.,nbsp:_,tab:>-
 set list
 set scrolloff=5
 set encoding=utf-8
@@ -98,7 +106,22 @@ set wildmenu
 "set splitbelow
 
 " gVim specific (windows)
+set guioptions-=m               " Remove menu bar
+set guioptions-=T               " Remove toolbar
+set guioptions-=r               " Remove right-hand scroll bar
+set guioptions-=L               " Remove left-hand scroll bar
 set backspace=2                 " Restores backspace function
+set completeopt=menuone         " Show completion menu on 1 item
+
+set dir=$USERPROFILE\\AppData\\Local\\Temp
+cd $USERPROFILE\\Documents
+let $RC = "~\\_vimrc"
+let $RC = $MYVIMRC
+
+" New Windows fixes for netrw
+let g:netrw_cygwin = 0
+let g:netrw_silent = 1
+let g:netrw_use_errorwindow = 0
 
 " Key mappings
 let mapleader = ","
@@ -109,8 +132,6 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
-
-let $RC = $MYVIMRC
 
 " Language specific commands
 autocmd FileType vim noremap <leader>c :call ToggleComment("\"")<CR>
@@ -141,23 +162,8 @@ if FindExe('python.exe')
     endif
 endif
 
-
 " VimCode Changes
-" Ensure Netrw behaves like a sidebar on the left side
 let g:netrw_banner = 0       " Hide the large, cluttered help text at the top
 let g:netrw_liststyle = 3    " Use 'tree' view (allows folders to expand/collapse)
-let g:netrw_winsize = 25     " Set the sidebar width to 25% of the screen
-let g:netrw_browse_split = 3 " Set the default choice for opening files to 3 (which means: New Tab)
+"let g:netrw_winsize = 25     " Set the sidebar width to 25% of the screen
 let g:netrw_mousemaps = 1    " Map double-click to execute that default choice
-
-" Clean up the statusline specifically for Netrw (explorer) windows
-augroup CleanNetrwStatusline
-  autocmd!
-  autocmd FileType netrw setlocal statusline=\ 
-augroup END
-
-" Automatically open Vexplore layout on every new tab
-augroup AutoNetrwTabs
-  autocmd!
-  autocmd TabNew * Vexplore | wincmd p
-augroup END
