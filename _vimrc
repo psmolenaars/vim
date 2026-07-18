@@ -85,6 +85,7 @@ set statusline +=\
 set statusline +=%.p%%\ 
 
 " General
+colorscheme slate
 syntax on
 filetype plugin on
 set autoindent
@@ -112,6 +113,8 @@ set guioptions-=r               " Remove right-hand scroll bar
 set guioptions-=L               " Remove left-hand scroll bar
 set backspace=2                 " Restores backspace function
 set completeopt=menuone         " Show completion menu on 1 item
+
+set guifont=Cascadia_Mono:h12:cANSI:qDRAFT
 
 set dir=$USERPROFILE\\AppData\\Local\\Temp
 cd $USERPROFILE\\Documents
