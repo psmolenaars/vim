@@ -102,8 +102,8 @@ set encoding=utf-8
 set mouse=a
 set hidden
 set wildmenu
-"set splitright
-"set splitbelow
+set wildmode=longest:full,full
+set path+=**
 
 " gVim specific (windows)
 set guioptions-=m               " Remove menu bar
