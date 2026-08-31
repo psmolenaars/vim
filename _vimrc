@@ -20,6 +20,22 @@ function! FindExe(exe)
     return result
 endfunction
 
+"Comment and uncomment v2.0
+function! ToggleCommentV2(...)
+    let cchar = a:0 > 0 ? a:1 : substitute(&commentstring, '%s', "", "")
+    let startpos = getpos("v")[1]
+
+    for line in split(startpos,"\n")
+        let current_text = getline(line)
+
+        if current_text =~ '^\s*' . escape(cchar, '\/*^$.~[]')
+            call setline(line, substitute(current_text, escape(cchar, '\/*^$.~[]'), '', ''))
+        else
+            call setline(line, substitute(current_text, '^\s*', '&' . cchar, ''))
+        endif
+    endfor
+endfunction
+
 " Comments or uncomments a visual selected line
 function! ToggleComment(cchar)
     let startpos = getpos("v")[1]
@@ -130,20 +146,20 @@ let g:netrw_use_errorwindow = 0
 let mapleader = ","
 nnoremap <leader>hl :nohlsearch<CR>
 noremap <leader>sb :call ScratchBuffer()<CR>
-noremap <leader>c :call ToggleComment("#")<CR>
+noremap <leader>c :call ToggleCommentV2()<CR>
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
-" Language specific commands
-autocmd FileType vim noremap <leader>c :call ToggleComment("\"")<CR>
+"Language specific commands
+"autocmd FileType vim noremap <leader>c :call ToggleCommentV2()<CR>
 
-" Python specific
+"Python specific
 augroup filetype_python
     autocmd!
     autocmd FileType python let maplocalleader = ","
-    autocmd FileType python noremap <localleader>c :call ToggleComment("#")<CR>
+    "autocmd FileType python noremap <localleader>c :call ToggleComment("#")<CR>
     autocmd FileType python setlocal fileformat=unix
     autocmd FileType python setlocal tabstop=4
     autocmd FileType python setlocal foldmethod=indent
